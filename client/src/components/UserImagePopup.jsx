@@ -19,11 +19,12 @@ export default function UserImagePopup({show, onClose, userInfo, onImageUpdated}
 
         event.preventDefault();
         addUserImage(user)
+        onClose()
     }
 
     async function addUserImage(userData) {
 
-        const response = await fetch('/api/users', {
+        const response = await fetch('http://localhost:1212/api/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

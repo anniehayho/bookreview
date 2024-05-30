@@ -15,7 +15,7 @@ export default function Home() {
   async function getBooks() {
 
     try {
-      const response = await fetch("/api/books");
+      const response = await fetch("http://localhost:1212/api/books");
 
       const allBooks = await response.json();
       setBooks(allBooks);
@@ -30,7 +30,7 @@ export default function Home() {
   async function getActions(auth0_sub) {
 
     try {
-      const response = await fetch(`/api/feed/${auth0_sub}`);
+      const response = await fetch(`http://localhost:1212/api/feed/${auth0_sub}`);
 
       const allActions = await response.json();
       setActions(allActions);
@@ -104,7 +104,7 @@ export default function Home() {
                 key = {index}
                 title = {item.volumeInfo.title}
                 author = {item.volumeInfo.authors}
-                img = {item.volumeInfo.imageLinks.thumbnail}
+                img = {item.volumeInfo.imageLinks?.thumbnail}
                 category = {item.volumeInfo.categories}
                 id = {item?.id}
                 faved = {actionById(item.id)[0]}

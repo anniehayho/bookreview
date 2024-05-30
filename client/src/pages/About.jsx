@@ -5,12 +5,36 @@ import '../styles/About.css'
 export default function About() {
   return (
     <div className='about-page'>
-      <img 
-          style={{ width: '256px', height: '256px', borderRadius: '2%', marginBottom: '2%'}} 
-          src={about}
-        />
-      <h2>About the App</h2>
-      <p>BookBites is a user-friendly website designed for book lovers. It allows you to discover great books, write reviews, and rate them. More importantly, it offers a unique feature where you can take personal notes about each book. You can record where you were while reading, who you were with, how you felt, or even how you relate to certain characters.</p>
+      <div className='about-img'>
+        <img 
+            style={{ width: '960x', height: '500px', borderRadius: '2%', marginBottom: '2%'}} 
+            src={about}
+          />
+      </div>
+      <div className='about-text'>
+        <div className='about-app'>
+          <h2>About the App</h2>
+          <p>
+            Welcome to our book review site! Here you will find thoughtful, in-depth analysis and critique of the latest fiction and nonfiction releases. 
+
+            Our team of passionate, avid readers provides honest, unbiased reviews to help you discover your next great read. We cover a wide range of genres, from literary fiction to science fiction, memoirs to history books, and everything in between. 
+
+            Each review offers a detailed breakdown of the book's strengths and weaknesses, key themes, character development, and overall readability. We strive to give you the information you need to decide whether a book is worth your time and money. 
+
+            In addition to new releases, we also revisit classic works that have stood the test of time. Our archives contain reviews spanning decades of celebrated authors and titles. 
+
+            Whether you're looking for your next book club selection, a gift for a loved one, or simply searching for your next absorbing read, you've come to the right place. Explore our reviews, discover new favorites, and enjoy delving into the world of books! 
+            </p>
+        </div>
+        <div className='about-team'>
+          <h2>About Our Team</h2>
+          <p>
+            <span>Owner: Nguyễn Thị Quỳnh Mai - 21522321</span> <br />
+            <span>Front-End: Nguyễn Thị Quỳnh Mai - 21522321</span> <br />
+            <span>Back-End: Nguyễn Thị Quỳnh Mai - 21522321</span><br />
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

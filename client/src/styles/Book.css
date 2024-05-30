@@ -12,7 +12,7 @@
     gap: 2%;
     margin-top: 5%;
     align-items: center;
-    padding-right: 3%;
+    padding-right: 2%;
 }
 
 .favorite-icon:hover {
@@ -26,7 +26,7 @@
 
 /* right side of the page */
 .book-page-right {
-    padding-left: 3%;
+    padding-left: 2%;
     display: flex;
     flex-direction: column;
     gap: 2%;
@@ -46,7 +46,8 @@
 
 #instruction-bp {
     font-size: xx-small;
-    font-style: italic;
+    /* font-style: italic; */
+    font-family: "Montagu Slab", serif;
     margin: 0%;
 }
 

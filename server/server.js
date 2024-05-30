@@ -174,6 +174,14 @@ async function getUserIdFromSub(userSub) {
     
     return user.rows[0].user_id;
 }
+async function getUserById(userSub) {
+    const user = await db.query(
+        'SELECT * FROM users WHERE user_id = $1',
+         [userSub]
+    );
+    
+    return user.rows[0];
+}
 
 
 //update and add feed events
@@ -272,14 +280,18 @@ app.post("/api/comment", async (req, res) =>  {
 
         const {auth0_sub, api_id, text, date, rate } = req.body;
 
+        const createdDate = (new Date()).toISOString()
         let user_id = await getUserIdFromSub(auth0_sub)
 
+        const user = await getUserById(user_id)
+        
         const { rows: comment } = await db.query("INSERT INTO comments (user_id, api_id, text, date, rate) VALUES ($1, $2, $3, $4, $5) RETURNING *", [user_id, api_id, text, date, rate]);
 
         if (comment.length === 0) {
             res.status(404).json({ message: "Comment not found" });
         } else {
-            res.status(200).json(comment);
+            console.log({...comment[0], ...user})
+            res.status(200).json({...comment[0], ...user});
         }
 
     } catch (error) {

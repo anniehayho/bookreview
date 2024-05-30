@@ -49,7 +49,7 @@ describe('Book', () => {
 
     // Optionally, assert that the fetch was called with correct arguments
     await vi.waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith('/api/feed', {
+      expect(global.fetch).toHaveBeenCalledWith('http://localhost:1212/api/feed', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

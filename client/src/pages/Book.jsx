@@ -15,6 +15,7 @@ export default function Book() {
     const [book, setBook] = useState([]);
 
     let { id } = useParams();
+    
 
     //coming from Link
     const location = useLocation();
@@ -40,8 +41,7 @@ export default function Book() {
     //Get specific book info
     async function getBookById() {
         try {
-
-            const response = await fetch(`/api/${id}`);
+            const response = await fetch(`http://localhost:1212/api/${id}`);
             const theBook = await response.json()
 
             setBook(theBook)
@@ -60,7 +60,7 @@ export default function Book() {
     //sends favorite and status action info to the feed table
     async function sendActionInfo(auth0_sub, api_id, isFav, shelf_status) {
 
-        const response = await fetch('/api/feed', {
+        const response = await fetch('http://localhost:1212/api/feed', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ export default function Book() {
             default:
         }
 
-        sendActionInfo(user.sub, id, action.isFaved, status_code)
+        sendActionInfo(user?.sub, id, action.isFaved, status_code)
 
     }, [action]);
 
@@ -135,7 +135,7 @@ export default function Book() {
     //add new comment
        async function newComment(auth0_sub, api_id, comment) {
 
-        const response = await fetch('/api/comment', {
+        const response = await fetch('http://localhost:1212/api/comment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -159,7 +159,8 @@ export default function Book() {
         //shows the new comment immediately on the page
         try {
             
-            const newCommentResponse = await newComment(user.sub, id, comment);
+            const newCommentResponse = await newComment(user?.sub, id, comment);
+            console.log(newCommentResponse)
             setCommentList(preValue => [...preValue, newCommentResponse]);
             
             setComment({
@@ -180,7 +181,7 @@ export default function Book() {
     async function getComments(id, auth0_sub) {
 
         try {
-            const response = await fetch(`/api/comment/${id}/${auth0_sub}`);
+            const response = await fetch(`http://localhost:1212/api/comment/${id}/${auth0_sub}`);
     
             const allComments = await response.json();
 
@@ -195,8 +196,8 @@ export default function Book() {
     }
 
     useEffect(() => {
-        getComments(id, user.sub);
-    }, [id, user.id]);
+        getComments(id, user?.sub);
+    }, [id, user?.id]);
     //
 
     const iconProps = {
@@ -288,7 +289,7 @@ export default function Book() {
                             userName = {item.first_name + " " + item.last_name}
                             date = {item.date}
                             rating={item.rate}
-                            icon = {item.auth0_sub === user.sub}
+                            icon = {item.auth0_sub === user?.sub}
                             commentId = {item.comment_id}
                             userImage={item.image}
                         />

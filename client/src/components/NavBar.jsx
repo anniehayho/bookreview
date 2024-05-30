@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {useEffect} from 'react'
-import {GiBookAura } from 'react-icons/gi';
+import {GiBlackBook } from 'react-icons/gi';
 
 
 export default function NavBar() {
@@ -11,7 +11,7 @@ export default function NavBar() {
 
     async function sendEmailToBackend(first_name, last_name, email, auth0_sub) {
 
-        const response = await fetch('/api/users', {
+        const response = await fetch('http://localhost:1212/api/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,10 +52,10 @@ export default function NavBar() {
             
             <ul>
                 <li>
-                    <GiBookAura style= {{color: 'rgb(0,46,97)', marginLeft: 20}} size={48}/>
+                    <GiBlackBook style= {{color: 'rgb(0,46,97)', marginLeft: 20}} size={48}/>
                 </li>
                 <li>
-                    <Link to="/" className='home'> BookBites </Link>
+                    <Link to="/" className='home'> Book-Reviews </Link>
                 </li>
             </ul>
 

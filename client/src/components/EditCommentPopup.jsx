@@ -15,12 +15,13 @@ export default function EditCommentPopup({show, onClose, text, rating, comment_i
 
         const { value, name } = event.target;
         setEditedComment((prevValue) => ({ ...prevValue, [name]: value }));
+
     }
 
     async function updateComment () {
 
         try {
-          const response = await fetch(`/api/comment`, {
+          const response = await fetch(`http://localhost:1212/api/comment`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(editedComment)
@@ -29,6 +30,7 @@ export default function EditCommentPopup({show, onClose, text, rating, comment_i
         } catch (error) {
           console.error(error.message)
         }
+        // window. location. reload();
     }
 
     function handleSubmit(event) {
@@ -36,6 +38,8 @@ export default function EditCommentPopup({show, onClose, text, rating, comment_i
         event.preventDefault();
         updateComment().catch(console.error);
         onCommentUpdated?.();
+        onClose();
+        window. location. reload();
     }
 
     return (

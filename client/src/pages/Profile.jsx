@@ -34,7 +34,7 @@ export default function Profile() {
   async function getUserAllActions(id) {
 
     try {
-      const response = await fetch(`/api/profile/${id}`);
+      const response = await fetch(`http://localhost:1212/api/profile/${id}`);
 
       const allActions = await response.json();
       setAllActions(allActions);
@@ -95,7 +95,7 @@ export default function Profile() {
 
       const bookPromises = bookIds.map(async id => {
 
-        const response = await fetch(`/api/${id}`);
+        const response = await fetch(`http://localhost:1212/api/${id}`);
         return await response.json();
       });
   
@@ -130,7 +130,7 @@ export default function Profile() {
     try {
       const bookPromises = allActions.map(async item => {
 
-        const response = await fetch(`/api/${item.api_id}`);
+        const response = await fetch(`http://localhost:1212/api/${item.api_id}`);
         const bookData = await response.json();
         return bookData;
       });
@@ -175,7 +175,7 @@ export default function Profile() {
           (activeTab === 'books') &&
           filteredBooks.map((book) => {
 
-            const action = allActions.find(action => action.api_id === book.id);
+            const action = allActions.find(action => action.api_id === book?.id);
             
             const isFaved = action ? action.isfavorite : false;
             const status = action ? action.shelf_status : undefined;
@@ -183,12 +183,12 @@ export default function Profile() {
             return (
               
               <BookCard 
-                key={book.id} 
+                key={book?.id} 
                 title={book.volumeInfo.title}
                 author={book.volumeInfo.authors}
-                img={book.volumeInfo.imageLinks.thumbnail}
+                img={book.volumeInfo.imageLinks?.thumbnail}
                 category={book.volumeInfo.categories[0]}
-                id={book.id}
+                id={book?.id}
                 faved={isFaved}
                 status={status}
               />
@@ -204,7 +204,7 @@ export default function Profile() {
         allActions.filter((item) => item.comment_id !== null)
         .map((item, index) => {
 
-          const book = allBooksOfUser.find(book => book.id === item.api_id)
+          const book = allBooksOfUser.find(book => book?.id === item.api_id)
           const bookName = book.volumeInfo.title
 
           return (
@@ -229,7 +229,7 @@ export default function Profile() {
         allActions.filter((item) => item.note !== null)
         .map((item, index) => {
 
-          const book = allBooksOfUser.find(book => book.id === item.api_id)
+          const book = allBooksOfUser.find(book => book?.id === item.api_id)
           const bookName = book.volumeInfo.title
 
           return (
@@ -248,7 +248,7 @@ export default function Profile() {
         <NotePopup 
           show={show.notePopup}
           onClose={()=> setShow(prevValue => ({...prevValue, "notePopup": false}))}
-          books = {filteredBooks}
+          books = {allBooksOfUser}
           feeds = {allActions}
           noteUpdated={handleNoteUpdated}
         />

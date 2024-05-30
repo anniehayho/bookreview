@@ -15,7 +15,7 @@ export default function BookCard({title, author, img, category, id, faved, statu
   //sends favorite action info to the feed table
   async function sendFavoriteInfo(auth0_sub, api_id, isFav) {
 
-    const response = await fetch('/api/feed', {
+    const response = await fetch('http://localhost:1212/api/feed', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

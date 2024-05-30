@@ -45,7 +45,7 @@ describe('BookCard', () => {
     fireEvent.click(favoriteIcon);
 
     // Assert that the fetch was called with correct arguments
-    expect(global.fetch).toHaveBeenCalledWith('/api/feed', {
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost:1212/api/feed', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

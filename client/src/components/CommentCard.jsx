@@ -13,13 +13,14 @@ export default function CommentCard({ text, userName, date, rating, icon, commen
   async function deleteComment(id) {
 
     try {
-        const deletePost = await fetch(`/api/comment/${id}`, 
+        const deletePost = await fetch(`http://localhost:1212/api/comment/${id}`, 
         {method: "DELETE"})
     } catch (error) {
         console.error(error.message)
     }
 
     onCommentUpdated?.();
+    window. location. reload();
   }
 
   //month as a str/ day/ year

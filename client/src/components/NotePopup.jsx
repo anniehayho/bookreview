@@ -42,6 +42,7 @@ export default function NotePopup({ show, onClose, books, feeds, noteUpdated }) 
 
     function handleSubmit(event) {
         event.preventDefault();
+        onClose()
         
         addNoteYourFeed(action)
     }
@@ -50,7 +51,7 @@ export default function NotePopup({ show, onClose, books, feeds, noteUpdated }) 
     //adds note
     async function addNoteYourFeed(action) {
 
-        const response = await fetch('/api/note', {
+        const response = await fetch('http://localhost:1212/api/note', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -78,7 +79,7 @@ export default function NotePopup({ show, onClose, books, feeds, noteUpdated }) 
                         <select name="feed_id" value={selectedBookApiId} onChange={handleChange}>
                             <option value="" disabled> select a book</option>
                             {books.map((book, index) => (
-                                <option key={index} value={book.id}> {book.volumeInfo.title} </option>
+                                <option key={index} value={book?.id}> {book.volumeInfo.title} </option>
                             ))}
                         </select>
                     }
