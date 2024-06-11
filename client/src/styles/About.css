@@ -5,5 +5,31 @@
     margin: 5%;
     text-align: justify;
     padding: 3%;
+
+}
+.about-app > h2 {
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-family: "Montagu Slab", serif;
 }
 
+.about-team > h2 {
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-family: "Montagu Slab", serif;
+}
+
+.about-team{
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.15 rem;
+}
+
+.about-app{
+    /* text-align: center; */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.15 rem;
+
+}

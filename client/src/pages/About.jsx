@@ -13,7 +13,7 @@ export default function About() {
       </div>
       <div className='about-text'>
         <div className='about-app'>
-          <h2>About the App</h2>
+          <h2>About the Book-Review Website</h2>
           <p>
             Welcome to our book review site! Here you will find thoughtful, in-depth analysis and critique of the latest fiction and nonfiction releases. 
 
@@ -28,10 +28,11 @@ export default function About() {
         </div>
         <div className='about-team'>
           <h2>About Our Team</h2>
-          <p>
-            <span>Owner: Nguyễn Thị Quỳnh Mai - 21522321</span> <br />
-            <span>Front-End: Nguyễn Thị Quỳnh Mai - 21522321</span> <br />
-            <span>Back-End: Nguyễn Thị Quỳnh Mai - 21522321</span><br />
+          <p >
+            <span>Nguyễn Thị Quỳnh Mai - 21522321</span> <br />
+            <span>Nguyễn Phan Thảo Nguyên - 21522392</span> <br />
+            <span>Nguyễn Kiều My - 21522350</span><br />
+            <span>Phạm Thị Thuỳ Trang - 21522497</span><br />
           </p>
         </div>
       </div>
